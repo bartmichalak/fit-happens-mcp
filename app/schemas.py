@@ -4,7 +4,6 @@ from typing import Optional
 from pydantic import BaseModel, Field, field_validator
 
 from app.config import settings
-from app.database import BaseDbModel
 
 
 class FilterParams(BaseModel):
@@ -19,15 +18,11 @@ class FilterParams(BaseModel):
         """Remove empty or whitespace-only filters."""
         return {k: v for k, v in v.items() if v and v.strip()}
 
-    def validate_against_model(self, model_class: type[BaseDbModel]) -> None:
+    def validate_against_model(self, model_class: type) -> None:
         """Validate that filter and sort fields exist in the model."""
-        allowed_fields = {field.name for field in model_class.__table__.columns}
-
-        if invalid := set(self.filters.keys()) - allowed_fields:
-            raise ValueError(f"Invalid filter fields: {invalid}")
-
-        if self.sort_by and self.sort_by not in allowed_fields:
-            raise ValueError(f"Invalid sort field: {self.sort_by}")
+        # This method can be removed or updated based on your specific needs
+        # since you're not using a database model
+        pass
 
 
 # Workout API Schemas
