@@ -25,6 +25,10 @@ class Settings(BaseSettings):
     # MCP SETTINGS
     mcp_server_name: str = f"MCP Server"
 
+    # EXTERNAL API SETTINGS
+    external_api_base_url: str = "https://api.example.com"
+    external_api_timeout: int = 30
+
 
     # 0. pytest ini_options
     # 1. environment variables
