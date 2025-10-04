@@ -2,7 +2,6 @@ from collections.abc import Iterator
 from datetime import datetime
 from typing import Annotated, TypeVar
 
-from fastapi import Depends
 from pydantic import EmailStr
 from sqlalchemy import DateTime, Engine, String, create_engine, inspect
 from sqlalchemy.orm import (
